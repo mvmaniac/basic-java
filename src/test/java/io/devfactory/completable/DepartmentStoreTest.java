@@ -41,6 +41,29 @@ class DepartmentStoreTest {
         executeFindShopPrices(store::findShopPricesSupplyAsyncWithExecutor, "findShopPricesSupplyAsyncWithExecutor");
     }
 
+    @DisplayName("findShopPricesWithDiscount_테스트")
+    @ParameterizedTest(name = "{index}, {displayName}, size={0}")
+    @ValueSource(ints = {5})
+    void findShopPricesWithDiscount_테스트(@ConvertWith(ShopConvert.class) DepartmentStore store) {
+        executeFindShopPrices(store::findShopPricesWithDiscount, "findShopPricesWithDiscount");
+        log.debug("[dev] ---------------------------------------------------");
+        executeFindShopPrices(store::findShopPricesWithDiscountSupplyAsync, "findShopPricesWithDiscountSupplyAsync");
+    }
+
+    @DisplayName("printShopPricesWithDiscount_테스트")
+    @ParameterizedTest(name = "{index}, {displayName}, size={0}")
+    @ValueSource(ints = {5})
+    void printShopPricesWithDiscount_테스트(@ConvertWith(ShopConvert.class) DepartmentStore store) {
+        store.printShopPricesWithDiscount("printShopPricesWithDiscount");
+    }
+
+    @DisplayName("findShopPricesWithExchangeSupplyAsync_테스트")
+    @ParameterizedTest(name = "{index}, {displayName}, size={0}")
+    @ValueSource(ints = {5})
+    void findShopPricesWithExchangeSupplyAsync_테스트(@ConvertWith(ShopConvert.class) DepartmentStore store) {
+        executeFindShopPrices(store::findShopPricesWithExchangeSupplyAsync, "findShopPricesWithExchangeSupplyAsync");
+    }
+
     private void executeFindShopPrices(Function<String, List<String>> findShopPrices, String product) {
         stopWatch.start();
 
