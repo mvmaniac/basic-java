@@ -50,7 +50,8 @@ public class DepartmentStore {
         // @formatter:off
         return shops.stream()
             .map(shop -> getPriceFormat(product, shop))
-            .collect(toList());
+            .collect(toList())
+        ;
         // @formatter:on
     }
 
@@ -61,8 +62,9 @@ public class DepartmentStore {
     public List<String> findShopPricesParallel(String product) {
         // @formatter:off
         return shops.parallelStream()
-                .map(shop -> getPriceFormat(product, shop))
-                .collect(toList());
+            .map(shop -> getPriceFormat(product, shop))
+            .collect(toList())
+        ;
         // @formatter:on
     }
 
@@ -93,8 +95,9 @@ public class DepartmentStore {
         final List<CompletableFuture<String>> priceFuture = shops.stream().map(asyncApply).collect(toList());
 
         return priceFuture.stream()
-                .map(CompletableFuture::join)
-                .collect(toList());
+            .map(CompletableFuture::join)
+            .collect(toList())
+        ;
         // @formatter:on
     }
 
@@ -112,7 +115,8 @@ public class DepartmentStore {
             .map(shop -> shop.getPriceWithDiscount(product))
             .map(Quote::parse)
             .map(Discount::applyDiscount)
-            .collect(toList());
+            .collect(toList())
+        ;
         // @formatter:on
     }
 
@@ -125,7 +129,8 @@ public class DepartmentStore {
 
         return priceFuture.stream()
             .map(CompletableFuture::join)
-            .collect(toList());
+            .collect(toList())
+        ;
         // @formatter:on
     }
 
@@ -139,7 +144,8 @@ public class DepartmentStore {
             .map(future -> future.thenAccept(s -> {
                 System.out.println(format("%s (done in %d msecs)", s, (System.nanoTime() - startTime) / 1_000_000));
             }))
-            .toArray(CompletableFuture[]::new);
+            .toArray(CompletableFuture[]::new)
+        ;
         // @formatter:on
 
         CompletableFuture.allOf(completableFutures).join();
@@ -154,7 +160,8 @@ public class DepartmentStore {
             .map(future -> future.thenApply(Quote::parse))
             .map(future -> future.thenCompose(quote ->
                 supplyAsync(() -> Discount.applyDiscount(quote), executor)
-            ));
+            ))
+        ;
         // @formatter:on
     }
 
@@ -182,11 +189,13 @@ public class DepartmentStore {
                     // 에러를 확인하려면 completeOnTimeout 의 timeout 값을 더 높게 주어야 함
                     .orTimeout(3, TimeUnit.SECONDS)
                 )
-                .collect(toList());
+                .collect(toList())
+            ;
 
         return priceFutureInUSD.stream()
-                .map(CompletableFuture::join)
-                .collect(toList());
+            .map(CompletableFuture::join)
+            .collect(toList())
+        ;
         // @formatter:on
     }
 
