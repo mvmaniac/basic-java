@@ -1,4 +1,4 @@
-package io.devfactory.reactive.flow;
+package io.devfactory.reactive;
 
 import io.devfactory.error.ServiceRuntimeException;
 
