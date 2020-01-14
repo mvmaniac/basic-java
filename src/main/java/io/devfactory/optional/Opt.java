@@ -9,6 +9,8 @@ import static java.util.stream.Collectors.toSet;
 
 public class Opt {
 
+    private Opt() {}
+
     public static String getCarInsuranceName(Optional<OptPerson> person) {
         // @formatter:off
         // Optional 으로 조작

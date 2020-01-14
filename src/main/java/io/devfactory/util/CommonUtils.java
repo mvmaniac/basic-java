@@ -1,5 +1,6 @@
 package io.devfactory.util;
 
+import io.devfactory.error.ServiceRuntimeException;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +19,9 @@ public class CommonUtils {
         try {
             TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {
-            throw new RuntimeException("delay interrupted exception...");
+            // Restore interrupted state...
+            Thread.currentThread().interrupt();
+            throw new ServiceRuntimeException("delay interrupted exception...");
         }
     }
 
@@ -31,7 +34,9 @@ public class CommonUtils {
 
             TimeUnit.MILLISECONDS.sleep(millis);
         } catch (InterruptedException e) {
-            throw new RuntimeException("randomDelay interrupted exception...");
+            // Restore interrupted state...
+            Thread.currentThread().interrupt();
+            throw new ServiceRuntimeException("randomDelay interrupted exception...");
         }
     }
 

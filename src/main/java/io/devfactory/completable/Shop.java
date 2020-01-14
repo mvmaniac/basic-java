@@ -1,5 +1,7 @@
 package io.devfactory.completable;
 
+import io.devfactory.error.ServiceRuntimeException;
+
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
@@ -67,7 +69,7 @@ public class Shop {
     }
 
     private double calculatePriceException(String product) {
-        throw new RuntimeException("calculatePriceException...");
+        throw new ServiceRuntimeException("calculatePriceException...");
     }
 
 }
