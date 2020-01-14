@@ -7,9 +7,9 @@ import java.util.Set;
 
 import static java.util.stream.Collectors.toSet;
 
-public class Opt {
+public class OptMain {
 
-    private Opt() {}
+    private OptMain() {}
 
     public static String getCarInsuranceName(Optional<OptPerson> person) {
         // @formatter:off
@@ -42,7 +42,7 @@ public class Opt {
         // @formatter:off
         // getOrDefault 가 있기는 하지만 예제니깐...
         return Optional.ofNullable(props.getProperty(name))
-            .flatMap(Opt::stringToInt)
+            .flatMap(OptMain::stringToInt)
             .filter(i -> i > 0)
             .orElse(0)
         ;

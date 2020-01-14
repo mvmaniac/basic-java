@@ -18,13 +18,13 @@ import java.util.Properties;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
-class OptTest {
+class OptMainTest {
 
     @DisplayName("자동차의 보험회사 이름 찾기")
     @ParameterizedTest(name = "{index}, {displayName}, message={0},{1}")
     @CsvSource({"1,insurance-1", "1,null", "2,null", "3,null", "4,null"})
     void 자동차의_보험회사_이름_찾기(@AggregateWith(OptAggregator.class) OptPerson person) {
-        log.debug("[dev] person: {}", Opt.getCarInsuranceName(Optional.ofNullable(person)));
+        log.debug("[dev] person: {}", OptMain.getCarInsuranceName(Optional.ofNullable(person)));
 
         passSonarLint();
     }
@@ -44,7 +44,7 @@ class OptTest {
             getPerson(1, "null")
         );
         // @formatter:on
-        log.debug("[dev] person: {}", Opt.getCarInsuranceNames(persons));
+        log.debug("[dev] person: {}", OptMain.getCarInsuranceNames(persons));
 
         passSonarLint();
     }
@@ -61,7 +61,7 @@ class OptTest {
 
         // @formatter:off
         properties.forEach((k, v) ->
-            log.debug("[dev] key:{}, value:{}", k, Opt.readDuration(properties, String.valueOf(k)))
+            log.debug("[dev] key:{}, value:{}", k, OptMain.readDuration(properties, String.valueOf(k)))
         );
         // @formatter:on
 
