@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.util.function.DoubleUnaryOperator;
 
 import static io.devfactory.functional.Currying.curriedConverter;
-import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressWarnings("squid:S2699")
 @Slf4j
 class CurryingTest {
 
@@ -20,13 +20,6 @@ class CurryingTest {
         final DoubleUnaryOperator convertKMtoMI= curriedConverter(0.6214, 0);
 
         log.debug("[dev] convertUSDtoGBP(100): {}", convertUSDtoGBP.applyAsDouble(100));
-
-        passSonarLint();
-    }
-
-    // SonarLint pass 용
-    private void passSonarLint() {
-        assertThat(true).isTrue();
     }
 
 }

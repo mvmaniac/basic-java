@@ -9,8 +9,8 @@ import java.util.List;
 import static io.devfactory.functional.Subset.subsets;
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.joining;
-import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressWarnings("squid:S2699")
 @Slf4j
 class SubsetTest {
 
@@ -24,13 +24,6 @@ class SubsetTest {
                 .collect(joining(", "));
 
         log.debug("[dev] subsets: {}", subsets);
-
-        passSonarLint();
-    }
-
-    // SonarLint pass 용
-    private void passSonarLint() {
-        assertThat(true).isTrue();
     }
 
 }

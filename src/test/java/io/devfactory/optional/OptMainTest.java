@@ -15,8 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+@SuppressWarnings("squid:S2699")
 @Slf4j
 class OptMainTest {
 
@@ -25,8 +24,6 @@ class OptMainTest {
     @CsvSource({"1,insurance-1", "1,null", "2,null", "3,null", "4,null"})
     void 자동차의_보험회사_이름_찾기(@AggregateWith(OptAggregator.class) OptPerson person) {
         log.debug("[dev] person: {}", OptMain.getCarInsuranceName(Optional.ofNullable(person)));
-
-        passSonarLint();
     }
     
     @DisplayName("자동차의_보험회사_이름_목록_찾기")
@@ -45,8 +42,6 @@ class OptMainTest {
         );
         // @formatter:on
         log.debug("[dev] person: {}", OptMain.getCarInsuranceNames(persons));
-
-        passSonarLint();
     }
 
     @DisplayName("프로퍼티_값_읽기")
@@ -64,8 +59,6 @@ class OptMainTest {
             log.debug("[dev] key:{}, value:{}", k, OptMain.readDuration(properties, String.valueOf(k)))
         );
         // @formatter:on
-
-        passSonarLint();
     }
 
     static class OptAggregator implements ArgumentsAggregator {
@@ -97,11 +90,6 @@ class OptMainTest {
         }
 
         return person;
-    }
-
-    // SonarLint pass 용
-    private void passSonarLint() {
-        assertThat(true).isTrue();
     }
 
 }
