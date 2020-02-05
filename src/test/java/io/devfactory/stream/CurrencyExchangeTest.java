@@ -168,99 +168,103 @@ class CurrencyExchangeTest {
     @Test
     void 그룹화를_할_수_있다() {
         // @formatter:off
-        final Map<DishType, List<Dish>> dishesByType = menu.stream().collect(
-            groupingBy(Dish::getDishType)
-        );
-
         log.debug("[dev] dishesByType");
         log.debug("[dev]");
+
+        final Map<DishType, List<Dish>> dishesByType = menu.stream().collect(
+                groupingBy(Dish::getDishType)
+        );
 
         dishesByType.entrySet().forEach(logDev);
         // @formatter:on
 
         // @formatter:off
-        final Map<CaloricLevel, List<Dish>> dishesByCaloricLevel = menu.stream().collect(
-            groupingBy(this::getCaloricLevel)
-        );
-
         log.debug("[dev] ---------------------------------------------------");
         log.debug("[dev] dishesByCaloricLevel");
         log.debug("[dev]");
+
+        final Map<CaloricLevel, List<Dish>> dishesByCaloricLevel = menu.stream().collect(
+            groupingBy(this::getCaloricLevel)
+        );
 
         dishesByCaloricLevel.entrySet().forEach(logDev);
         // @formatter:on
 
         // @formatter:off
+        log.debug("[dev] ---------------------------------------------------");
+        log.debug("[dev] caloricDishesByType");
+        log.debug("[dev]");
+
         final Map<DishType, List<Dish>> caloricDishesByType = menu.stream().collect(
             groupingBy(Dish::getDishType,
                 filtering(dish -> dish.getCalories() > 500, toList())
             )
         );
 
-        log.debug("[dev] ---------------------------------------------------");
-        log.debug("[dev] caloricDishesByType");
-        log.debug("[dev]");
-
         caloricDishesByType.entrySet().forEach(logDev); // fish 처럼 그룹화 된 데이터가 없어도 나옴
         // @formatter:on
 
         // @formatter:off
+        log.debug("[dev] ---------------------------------------------------");
+        log.debug("[dev] dishNamesByType");
+        log.debug("[dev]");
+
         final Map<DishType, List<String>> dishNamesByType = menu.stream().collect(
             groupingBy(Dish::getDishType,
                 mapping(Dish::getName, toList())
             )
         );
 
-        log.debug("[dev] ---------------------------------------------------");
-        log.debug("[dev] dishNamesByType");
-        log.debug("[dev]");
-
         dishNamesByType.entrySet().forEach(logDev);
         // @formatter:on
 
         // @formatter:off
+        log.debug("[dev] ---------------------------------------------------");
+        log.debug("[dev] dishTagNamesByType");
+        log.debug("[dev]");
+
         final Map<DishType, Set<String>> dishTagNamesByType = menu.stream().collect(
             groupingBy(Dish::getDishType,
                 flatMapping(dish -> dishTags.get(dish.getName()).stream(), toSet())
             )
         );
 
-        log.debug("[dev] ---------------------------------------------------");
-        log.debug("[dev] dishTagNamesByType");
-        log.debug("[dev]");
-
         dishTagNamesByType.entrySet().forEach(logDev);
         // @formatter:on
 
         // @formatter:off
+        log.debug("[dev] ---------------------------------------------------");
+        log.debug("[dev] dishesByTypeCaloricLevel");
+        log.debug("[dev]");
+
         final Map<DishType, Map<CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel = menu.stream().collect(
             groupingBy(Dish::getDishType, // 첫 번째 수준의 분류 함수
                 groupingBy(this::getCaloricLevel) // 두 번째 수준의 분류 함수
             )
         );
 
-        log.debug("[dev] ---------------------------------------------------");
-        log.debug("[dev] dishesByTypeCaloricLevel");
-        log.debug("[dev]");
-
         dishesByTypeCaloricLevel.entrySet().forEach(logDev);
         // @formatter:on
 
         // @formatter:off
+        log.debug("[dev] ---------------------------------------------------");
+        log.debug("[dev] typesCount");
+        log.debug("[dev]");
+
         final Map<DishType, Long> typesCount = menu.stream().collect(
             groupingBy(Dish::getDishType,
                 counting()
             )
         );
 
-        log.debug("[dev] ---------------------------------------------------");
-        log.debug("[dev] typesCount");
-        log.debug("[dev]");
-
         typesCount.entrySet().forEach(logDev);
         // @formatter:on
 
         // @formatter:off
+        log.debug("[dev] ---------------------------------------------------");
+        log.debug("[dev] mostCaloricByType");
+        log.debug("[dev]");
+
         final Map<DishType, Dish> mostCaloricByType1 = menu.stream().collect(
             groupingBy(Dish::getDishType, // 분류 함수
                 collectingAndThen(
@@ -274,25 +278,97 @@ class CurrencyExchangeTest {
             toMap(Dish::getDishType, Function.identity(), BinaryOperator.maxBy(comparingInt(Dish::getCalories)))
         );
 
-        log.debug("[dev] ---------------------------------------------------");
-        log.debug("[dev] mostCaloricByType");
-        log.debug("[dev]");
-
         mostCaloricByType1.entrySet().forEach(logDev);
         // @formatter:on
 
         // @formatter:off
+        log.debug("[dev] ---------------------------------------------------");
+        log.debug("[dev] totalCaloriesByType");
+        log.debug("[dev]");
+
         final Map<DishType, Integer> totalCaloriesByType = menu.stream().collect(
             groupingBy(Dish::getDishType,
                 summingInt(Dish::getCalories)
             )
         );
 
-        log.debug("[dev] ---------------------------------------------------");
-        log.debug("[dev] totalCaloriesByType");
+        totalCaloriesByType.entrySet().forEach(logDev);
+        // @formatter:on
+    }
+    
+    @DisplayName("분할을 할 수 있다")
+    @Test
+    void 분할을_할_수_있다() {
+        // @formatter:off
+        log.debug("[dev] partitionedMenu");
         log.debug("[dev]");
 
-        totalCaloriesByType.entrySet().forEach(logDev);
+        final Map<Boolean, List<Dish>> partitionedMenu = menu.stream().collect(
+            partitioningBy(Dish::isVegetarian)
+        );
+
+        //final List<Dish> vegetarianDishes = partitionedMenu.get(true);
+        //final List<Dish> vegetarianDishes = menu.stream().filter(Dish::isVegetarian).collect(toList());
+
+        partitionedMenu.entrySet().forEach(logDev);
+        // @formatter:on
+
+        // @formatter:off
+        log.debug("[dev] ---------------------------------------------------");
+        log.debug("[dev] vegetarianDishesByType");
+        log.debug("[dev]");
+
+        final Map<Boolean, Map<DishType, List<Dish>>> vegetarianDishesByType = menu.stream().collect(
+            partitioningBy(Dish::isVegetarian,
+                groupingBy(Dish::getDishType)
+            )
+        );
+
+        vegetarianDishesByType.entrySet().forEach(logDev);
+        // @formatter:on
+
+        // @formatter:off
+        log.debug("[dev] ---------------------------------------------------");
+        log.debug("[dev] vegetarianDishesByType");
+        log.debug("[dev]");
+
+        final Map<Boolean, Dish> mostCaloricPartitionedByVegetarian = menu.stream().collect(
+            partitioningBy(Dish::isVegetarian,
+                collectingAndThen(
+                    maxBy(comparingInt(Dish::getCalories)), Optional::get
+                )
+            )
+        );
+
+        mostCaloricPartitionedByVegetarian.entrySet().forEach(logDev);
+        // @formatter:on
+
+        // @formatter:off
+        log.debug("[dev] ---------------------------------------------------");
+        log.debug("[dev] vegetarianDishesByTypeOver500");
+        log.debug("[dev]");
+
+        final Map<Boolean, Map<Boolean, List<Dish>>> vegetarianDishesByTypeOver500 = menu.stream().collect(
+            partitioningBy(Dish::isVegetarian,
+                partitioningBy(dish -> dish.getCalories() > 500)
+            )
+        );
+
+        vegetarianDishesByTypeOver500.entrySet().forEach(logDev);
+        // @formatter:on
+
+        // @formatter:off
+        log.debug("[dev] ---------------------------------------------------");
+        log.debug("[dev] vegetarianDishesByTypeOver500");
+        log.debug("[dev]");
+
+        final Map<Boolean, Long> vegetarianDishesByCount = menu.stream().collect(
+            partitioningBy(Dish::isVegetarian,
+                counting()
+            )
+        );
+
+        vegetarianDishesByCount.entrySet().forEach(logDev);
         // @formatter:on
     }
 
