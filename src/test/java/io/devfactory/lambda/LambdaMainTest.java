@@ -4,13 +4,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static io.devfactory.lambda.LambdaMain.filterApplesByColor;
-import static io.devfactory.lambda.LambdaMain.filterApplesByWeight;
-import static io.devfactory.lambda.LambdaMain.filterApples;
-import static io.devfactory.lambda.LambdaMain.filter;
+import static io.devfactory.lambda.LambdaMain.*;
+import static java.util.Comparator.comparingInt;
 
 @SuppressWarnings("squid:S2699")
 @Slf4j
@@ -22,7 +21,7 @@ class LambdaMainTest {
     @Test
     void 람다_테스트() {
         // @formatter:off
-        final List<Apple> inventory = List.of(
+        final List<Apple> inventory = Arrays.asList(
             new Apple(80, Color.GREEN),
             new Apple(120, Color.RED),
             new Apple(155, Color.GREEN)
@@ -44,6 +43,14 @@ class LambdaMainTest {
         filter(inventory, apple -> Color.RED.equals(apple.getColor())).forEach(logDev);
         log.debug("[dev] ---------------------------------------------------");
         filter(inventory, apple -> apple.getWeight() >= 150).forEach(logDev);
+
+        log.debug("");
+
+        inventory.sort((a, b) -> a.getWeight() - b.getWeight());
+        inventory.forEach(logDev);
+        log.debug("[dev] ---------------------------------------------------");
+        inventory.sort(comparingInt(Apple::getWeight));
+        inventory.forEach(logDev);
     }
 
 }
