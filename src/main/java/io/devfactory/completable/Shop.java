@@ -11,8 +11,8 @@ import static java.lang.String.format;
 
 public class Shop {
 
-    private Random random = new Random();
-    private String name;
+    private final Random random = new Random();
+    private final String name;
 
     public Shop(String name) {
         this.name = name;

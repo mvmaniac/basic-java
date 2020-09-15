@@ -7,8 +7,8 @@ import static java.util.stream.Collectors.toList;
 
 public class StreamMain {
 
-    private static List<Dish> menu;
-    private static List<Dish> orderedMenu;
+    private static final List<Dish> menu;
+    private static final List<Dish> orderedMenu;
 
     static {
         // @formatter:off
@@ -45,11 +45,11 @@ public class StreamMain {
         // @formatter:off
         return menu.stream()
             .filter(dish -> dish.getCalories() > 300)
-                .peek(dish -> System.out.println(String.format("filter after: %s", dish)))
+                .peek(dish -> System.out.printf("filter after: %s%n", dish))
             .map(Dish::getName)
-                .peek(dish -> System.out.println(String.format("map after: %s", dish)))
+                .peek(dish -> System.out.printf("map after: %s%n", dish))
             .limit(limit)
-                .peek(dish -> System.out.println(String.format("limit after: %s", dish)))
+                .peek(dish -> System.out.printf("limit after: %s%n", dish))
             .collect(toList())
         ;
         // @formatter:on

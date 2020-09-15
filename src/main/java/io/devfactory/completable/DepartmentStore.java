@@ -5,7 +5,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 
 import static java.lang.String.format;
@@ -14,8 +16,8 @@ import static java.util.stream.Collectors.toList;
 
 public class DepartmentStore {
 
-    private List<Shop> shops;
-    private Executor executor;
+    private final List<Shop> shops;
+    private final Executor executor;
 
     public DepartmentStore(int size) {
         // @formatter:off
@@ -41,6 +43,7 @@ public class DepartmentStore {
             }
         );
         // @formatter:on
+
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -71,7 +74,7 @@ public class DepartmentStore {
     // price - CompletableFuture 로 비동기 처리
     public List<String> findShopPricesSupplyAsync(String product) {
         // @formatter:off
-        Function<Shop, CompletableFuture<String>> supplyAsync = (shop) ->
+        Function<Shop, CompletableFuture<String>> supplyAsync = shop ->
             supplyAsync(() -> getPriceFormat(product, shop));
         // @formatter:on
 
@@ -82,7 +85,7 @@ public class DepartmentStore {
     // 병렬 스트림과 달리 Executor 를 정의함으로써 스레드 풀을 조정할 수 있음
     public List<String> findShopPricesSupplyAsyncWithExecutor(String product) {
         // @formatter:off
-        Function<Shop, CompletableFuture<String>> supplyAsync = (shop) ->
+        Function<Shop, CompletableFuture<String>> supplyAsync = shop ->
             supplyAsync(() -> getPriceFormat(product, shop), executor);
         // @formatter:on
 
@@ -141,15 +144,13 @@ public class DepartmentStore {
         long startTime = System.nanoTime();
 
         final var completableFutures = findShopPricesWithDiscountStream(product)
-            .map(future -> future.thenAccept(s -> {
-                System.out.println(format("%s (done in %d msecs)", s, (System.nanoTime() - startTime) / 1_000_000));
-            }))
+            .map(future -> future.thenAccept(s -> System.out.printf("%s (done in %d msecs)%n", s, (System.nanoTime() - startTime) / 1_000_000)))
             .toArray(CompletableFuture[]::new)
         ;
         // @formatter:on
 
         CompletableFuture.allOf(completableFutures).join();
-        System.out.println(format("All shops have row responded in %d msecs", (System.nanoTime() - startTime) / 1_000_000));
+        System.out.printf("All shops have row responded in %d msecs%n", (System.nanoTime() - startTime) / 1_000_000);
     }
 
     // price & discount

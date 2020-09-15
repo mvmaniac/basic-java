@@ -4,8 +4,8 @@ import java.util.StringJoiner;
 
 public class Trader {
 
-    private String name;
-    private String city;
+    private final String name;
+    private final String city;
 
     public Trader(String name, String city) {
         this.name = name;
