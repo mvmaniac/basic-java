@@ -10,64 +10,64 @@ import java.util.Objects;
 // 따라서 의미를 좀 더 명시적이고 분명하게 표현할 수 있다면 객체를 사용해서 해당 개념을 구현 하라.
 public class Money {
 
-    public static final Money ZERO = Money.wons(0);
+  public static final Money ZERO = Money.wons(0);
 
-    private final BigDecimal amount;
+  private final BigDecimal amount;
 
-    public static Money wons(long amount) {
-        return new Money(BigDecimal.valueOf(amount));
+  public static Money wons(long amount) {
+    return new Money(BigDecimal.valueOf(amount));
+  }
+
+  public static Money wons(double amount) {
+    return new Money(BigDecimal.valueOf(amount));
+  }
+
+  private Money(BigDecimal amount) {
+    this.amount = amount;
+  }
+
+  public Money plus(Money money) {
+    return new Money(this.amount.add(money.amount));
+  }
+
+  public Money minus(Money money) {
+    return new Money(this.amount.subtract(money.amount));
+  }
+
+  public Money times(double percent) {
+    return new Money(this.amount.multiply(BigDecimal.valueOf(percent)));
+  }
+
+  public boolean isLessThan(Money other) {
+    return amount.compareTo(other.amount) < 0;
+  }
+
+  public boolean isGreaterThanEqual(Money other) {
+    return amount.compareTo(other.amount) >= 0;
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
     }
 
-    public static Money wons(double amount) {
-        return new Money(BigDecimal.valueOf(amount));
+    if (!(object instanceof Money)) {
+      return false;
     }
 
-    private Money(BigDecimal amount) {
-        this.amount = amount;
-    }
+    Money other = (Money) object;
+    return Objects.equals(amount.doubleValue(), other.amount.doubleValue());
+  }
 
-    public Money plus(Money money) {
-        return new Money(this.amount.add(money.amount));
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(amount);
+  }
 
-    public Money minus(Money money) {
-        return new Money(this.amount.subtract(money.amount));
-    }
-
-    public Money times(double percent) {
-        return new Money(this.amount.multiply(BigDecimal.valueOf(percent)));
-    }
-
-    public boolean isLessThan(Money other) {
-        return amount.compareTo(other.amount) < 0;
-    }
-
-    public boolean isGreaterThanEqual(Money other) {
-        return amount.compareTo(other.amount) >= 0;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) {
-            return true;
-        }
-
-        if (!(object instanceof Money)) {
-            return false;
-        }
-
-        Money other = (Money) object;
-        return Objects.equals(amount.doubleValue(), other.amount.doubleValue());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(amount);
-    }
-
-    @Override
-    public String toString() {
-        return amount.toString() +"원";
-    }
+  @Override
+  public String toString() {
+    return amount.toString() + "원";
+  }
 
 }

@@ -2,16 +2,16 @@ package io.devfactory.completable;
 
 public enum ExchangeMoney {
 
-    USD(1.0), EUR(1.35387), GBP(1.69715), CAD(.92106), MXN(.07683);
+  USD(1.0), EUR(1.35387), GBP(1.69715), CAD(.92106), MXN(.07683);
 
-    private final double rate;
+  private final double rate;
 
-    ExchangeMoney(double rate) {
-        this.rate = rate;
-    }
+  ExchangeMoney(double rate) {
+    this.rate = rate;
+  }
 
-    public double getRate() {
-        return rate;
-    }
+  public double getRate() {
+    return rate;
+  }
 
 }
