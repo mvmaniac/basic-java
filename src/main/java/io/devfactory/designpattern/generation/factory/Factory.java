@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Factory {
 
   public static Greeting getInstance(Language language) {
-    log.debug("[dev] 팩토리: 객체를 생성하여 반환");
+    log.debug("객체를 생성하여 반환");
 
     switch (language) {
       case KOREAN -> new Korean();

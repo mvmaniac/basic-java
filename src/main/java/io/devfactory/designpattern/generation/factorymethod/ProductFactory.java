@@ -14,7 +14,7 @@ import static io.devfactory.designpattern.generation.factorymethod.service.Brand
 public class ProductFactory extends Factory {
 
   public ProductFactory() {
-    log.debug("ProductFactory 를 생성합니다.");
+    log.debug("ProductFactory 객체를 생성합니다.");
   }
 
   @Override

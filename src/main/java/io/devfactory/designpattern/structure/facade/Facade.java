@@ -7,9 +7,9 @@ import io.devfactory.designpattern.structure.facade.service.Package3;
 // 패키지 클래스에 대한 파사드 패턴
 public class Facade {
   
-  private Package1 package1;
-  private Package2 package2;
-  private Package3 package3;
+  private final Package1 package1;
+  private final Package2 package2;
+  private final Package3 package3;
 
   public Facade() {
     // 인스턴스를 생성

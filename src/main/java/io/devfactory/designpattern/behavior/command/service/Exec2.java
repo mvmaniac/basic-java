@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Exec2 implements Command {
 
-  private Concrete receiver;
+  private final Concrete receiver;
 
   public Exec2(Concrete receiver) {
     log.debug("Exec2 객체를 생성합니다.");

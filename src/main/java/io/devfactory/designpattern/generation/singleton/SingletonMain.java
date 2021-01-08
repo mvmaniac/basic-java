@@ -1,5 +1,6 @@
 package io.devfactory.designpattern.generation.singleton;
 
+// 싱글턴 패턴 (Singleton Pattern)
 @SuppressWarnings({"squid:S1854","squid:S1481"})
 public class SingletonMain {
 
