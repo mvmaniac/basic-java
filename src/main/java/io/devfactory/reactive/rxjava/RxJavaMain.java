@@ -1,9 +1,8 @@
 package io.devfactory.reactive.rxjava;
 
-import static java.util.stream.Collectors.toList;
-
 import io.devfactory.reactive.TempInfo;
 import io.reactivex.Observable;
+
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
@@ -53,7 +52,7 @@ public class RxJavaMain {
 
   public static Observable<TempInfo> getCelsiusTemperatures(String... towns) {
     return Observable
-        .merge(Arrays.stream(towns).map(RxJavaMain::getCelsiusTemperature).collect(toList()));
+        .merge(Arrays.stream(towns).map(RxJavaMain::getCelsiusTemperature).toList());
   }
 
 }

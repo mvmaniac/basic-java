@@ -1,9 +1,5 @@
 package io.devfactory.completable;
 
-import static java.lang.String.format;
-import static java.util.concurrent.CompletableFuture.supplyAsync;
-import static java.util.stream.Collectors.toList;
-
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -11,6 +7,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.Stream;
+
+import static java.lang.String.format;
+import static java.util.concurrent.CompletableFuture.supplyAsync;
 
 public class DepartmentStore {
 
@@ -24,7 +23,7 @@ public class DepartmentStore {
     shops = Stream.iterate(1, n -> n + 1)
         .limit(size)
         .map(n -> new Shop("product" + n))
-        .collect(toList());
+        .toList();
 
     // 하나의 Executor 에서 사용할 스레드의 최대 개수는 100 이하로 설정하는게 바람직하다고 함
     executor = Executors.newFixedThreadPool(
@@ -49,7 +48,7 @@ public class DepartmentStore {
   public List<String> findShopPricesBlocking(String product) {
     return shops.stream()
         .map(shop -> getPriceFormat(product, shop))
-        .collect(toList())
+        .toList()
         ;
   }
 
@@ -60,7 +59,7 @@ public class DepartmentStore {
   public List<String> findShopPricesParallel(String product) {
     return shops.parallelStream()
         .map(shop -> getPriceFormat(product, shop))
-        .collect(toList())
+        .toList()
         ;
   }
 
@@ -84,11 +83,11 @@ public class DepartmentStore {
   // price
   private List<String> findShopPrices(Function<Shop, CompletableFuture<String>> asyncApply) {
     final List<CompletableFuture<String>> priceFuture = shops.stream().map(asyncApply)
-        .collect(toList());
+        .toList();
 
     return priceFuture.stream()
         .map(CompletableFuture::join)
-        .collect(toList())
+        .toList()
         ;
   }
 
@@ -105,7 +104,7 @@ public class DepartmentStore {
         .map(shop -> shop.getPriceWithDiscount(product))
         .map(Quote::parse)
         .map(Discount::applyDiscount)
-        .collect(toList())
+        .toList()
         ;
   }
 
@@ -114,11 +113,11 @@ public class DepartmentStore {
   // 한 executor 스레드에서 돌아감
   public List<String> findShopPricesWithDiscountSupplyAsync(String product) {
     final List<CompletableFuture<String>> priceFuture = findShopPricesWithDiscountStream(product)
-        .collect(toList());
+        .toList();
 
     return priceFuture.stream()
         .map(CompletableFuture::join)
-        .collect(toList())
+        .toList()
         ;
   }
 
@@ -171,11 +170,11 @@ public class DepartmentStore {
             // 에러를 확인하려면 completeOnTimeout 의 timeout 값을 더 높게 주어야 함
             .orTimeout(3, TimeUnit.SECONDS)
         )
-        .collect(toList());
+        .toList();
 
     return priceFutureInUSD.stream()
         .map(CompletableFuture::join)
-        .collect(toList())
+        .toList()
         ;
   }
 

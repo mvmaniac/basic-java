@@ -1,7 +1,5 @@
 package io.devfactory.stream;
 
-import static java.util.stream.Collectors.toList;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,14 +48,14 @@ public class StreamMain {
         .peek(dish -> System.out.printf("map after: %s%n", dish))
         .limit(limit)
         .peek(dish -> System.out.printf("limit after: %s%n", dish))
-        .collect(toList())
+        .toList()
         ;
   }
 
   public static List<Dish> getVegetarianDish() {
     return menu.stream()
         .filter(Dish::isVegetarian)
-        .collect(toList())
+        .toList()
         ;
   }
 
@@ -68,7 +66,7 @@ public class StreamMain {
   public static List<Dish> getLessThanCalories_320() {
     return orderedMenu.stream()
         .takeWhile(dish -> dish.getCalories() < 320)
-        .collect(toList())
+        .toList()
         ;
   }
 
@@ -79,7 +77,7 @@ public class StreamMain {
   public static List<Dish> getGreaterThanCalories_320() {
     return orderedMenu.stream()
         .dropWhile(dish -> dish.getCalories() < 320)
-        .collect(toList())
+        .toList()
         ;
   }
 
@@ -88,7 +86,7 @@ public class StreamMain {
   public static List<int[]> getPairNumbers(List<Integer> numbers1, List<Integer> numbers2) {
     return numbers1.stream()
         .flatMap(i -> numbers2.stream().map(j -> new int[]{i, j}))
-        .collect(toList())
+        .toList()
         ;
   }
 

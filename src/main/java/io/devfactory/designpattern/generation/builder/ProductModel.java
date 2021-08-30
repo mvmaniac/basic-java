@@ -8,8 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Arrays;
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 // 알고리즘의 하위 클래스를 구현
 @SuppressWarnings("squid:S3864")
 @Slf4j
@@ -34,7 +32,7 @@ public class ProductModel extends Algorithm {
     final List<Memory> memoryList = Arrays.stream(memory)
         .peek(mem -> log.debug("슬롯 {}GB 장착", mem))
         .mapToObj(Memory::new)
-        .collect(toList());
+        .toList();
 
     Memory[] memories = new Memory[memoryList.size()];
     this.computer.assembleMemory(memoryList.toArray(memories));
@@ -47,7 +45,7 @@ public class ProductModel extends Algorithm {
     final List<Storage> storageList = Arrays.stream(storage)
         .peek(st -> log.debug("슬롯 {}GB 장착", st))
         .mapToObj(Storage::new)
-        .collect(toList());
+        .toList();
 
     Storage[] storages = new Storage[storageList.size()];
     this.computer.assembleStorage(storageList.toArray(storages));
