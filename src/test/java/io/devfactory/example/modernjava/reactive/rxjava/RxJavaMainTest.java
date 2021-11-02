@@ -1,14 +1,11 @@
 package io.devfactory.example.modernjava.reactive.rxjava;
 
-import static io.devfactory.example.modernjava.reactive.rxjava.RxJavaMain.getCelsiusTemperature;
-import static io.devfactory.example.modernjava.reactive.rxjava.RxJavaMain.getCelsiusTemperatures;
-import static io.devfactory.example.modernjava.reactive.rxjava.RxJavaMain.getNegativeTemperature;
-import static io.devfactory.example.modernjava.reactive.rxjava.RxJavaMain.getTemperature;
-
 import io.devfactory.example.modernjava.reactive.TempInfo;
-import io.reactivex.Observable;
+import io.reactivex.rxjava3.core.Observable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static io.devfactory.example.modernjava.reactive.rxjava.RxJavaMain.*;
 
 @SuppressWarnings("squid:S2699")
 class RxJavaMainTest {

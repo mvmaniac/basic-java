@@ -1,8 +1,8 @@
 package io.devfactory.example.modernjava.reactive.rxjava;
 
 import io.devfactory.example.modernjava.reactive.TempInfo;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

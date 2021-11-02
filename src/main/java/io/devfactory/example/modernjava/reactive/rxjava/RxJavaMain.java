@@ -1,7 +1,7 @@
 package io.devfactory.example.modernjava.reactive.rxjava;
 
 import io.devfactory.example.modernjava.reactive.TempInfo;
-import io.reactivex.Observable;
+import io.reactivex.rxjava3.core.Observable;
 
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
