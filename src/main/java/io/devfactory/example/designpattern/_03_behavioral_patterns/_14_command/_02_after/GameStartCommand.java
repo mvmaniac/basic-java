@@ -1,0 +1,24 @@
+package io.devfactory.example.designpattern._03_behavioral_patterns._14_command._02_after;
+
+import io.devfactory.example.designpattern._03_behavioral_patterns._14_command._01_before.Game;
+
+@SuppressWarnings("ClassCanBeRecord")
+public class GameStartCommand implements Command {
+
+  private final Game game;
+
+  public GameStartCommand(Game game) {
+    this.game = game;
+  }
+
+  @Override
+  public void execute() {
+    game.start();
+  }
+
+  @Override
+  public void undo() {
+    new GameEndCommand(game).execute();
+  }
+
+}
