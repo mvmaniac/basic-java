@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class FileProcessor {
 
   private final String path;

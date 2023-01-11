@@ -8,7 +8,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class EmailSender {
 
   private final EmailSettings emailSettings;

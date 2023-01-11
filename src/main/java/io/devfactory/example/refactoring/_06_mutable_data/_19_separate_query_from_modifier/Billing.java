@@ -1,6 +1,5 @@
 package io.devfactory.example.refactoring._06_mutable_data._19_separate_query_from_modifier;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Billing {
 
   private final Customer customer;

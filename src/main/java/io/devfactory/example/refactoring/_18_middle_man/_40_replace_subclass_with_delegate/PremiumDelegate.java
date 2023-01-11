@@ -1,6 +1,5 @@
 package io.devfactory.example.refactoring._18_middle_man._40_replace_subclass_with_delegate;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class PremiumDelegate {
 
   private final Booking host;

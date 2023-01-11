@@ -2,7 +2,6 @@ package io.devfactory.example.designpattern._02_structural_patterns._06_adapter.
 
 import io.devfactory.example.designpattern._02_structural_patterns._06_adapter._02_after.security.UserDetails;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class AccountUserDetails implements UserDetails {
 
   private final Account account;

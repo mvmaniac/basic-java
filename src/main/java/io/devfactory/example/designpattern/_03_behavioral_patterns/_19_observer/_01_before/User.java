@@ -2,7 +2,6 @@ package io.devfactory.example.designpattern._03_behavioral_patterns._19_observer
 
 import java.util.List;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class User {
 
   private final ChatServer chatServer;

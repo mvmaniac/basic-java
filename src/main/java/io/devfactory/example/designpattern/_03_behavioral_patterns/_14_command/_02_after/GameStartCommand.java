@@ -2,7 +2,6 @@ package io.devfactory.example.designpattern._03_behavioral_patterns._14_command.
 
 import io.devfactory.example.designpattern._03_behavioral_patterns._14_command._01_before.Game;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class GameStartCommand implements Command {
 
   private final Game game;

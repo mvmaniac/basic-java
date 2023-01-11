@@ -3,7 +3,6 @@ package io.devfactory.example.refactoring._13_loop._33_replace_loop_with_pipelin
 import java.util.List;
 import java.util.Objects;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Author {
 
   private final String company;

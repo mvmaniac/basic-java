@@ -1,6 +1,5 @@
 package io.devfactory.example.refactoring._07_divergent_change._25_move_function.before;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Account {
 
   private final int daysOverdrawn;

@@ -2,7 +2,6 @@ package io.devfactory.example.designpattern._03_behavioral_patterns._15_interpre
 
 import java.util.Map;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class VariableExpression implements PostfixExpression {
 
   private final Character character;

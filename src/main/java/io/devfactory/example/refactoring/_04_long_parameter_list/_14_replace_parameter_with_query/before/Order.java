@@ -1,6 +1,5 @@
 package io.devfactory.example.refactoring._04_long_parameter_list._14_replace_parameter_with_query.before;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Order {
 
   private final int quantity;

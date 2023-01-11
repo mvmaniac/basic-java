@@ -1,6 +1,5 @@
 package io.devfactory.example.refactoring._18_middle_man._38_remove_middle_man;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Person {
 
   private final Department department;

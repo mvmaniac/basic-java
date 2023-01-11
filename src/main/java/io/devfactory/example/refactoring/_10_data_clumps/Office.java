@@ -1,6 +1,5 @@
 package io.devfactory.example.refactoring._10_data_clumps;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Office {
 
   private final TelephoneNumber officeTelephoneNumber;

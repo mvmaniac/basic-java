@@ -1,6 +1,5 @@
 package io.devfactory.example.refactoring._06_mutable_data._18_split_variable;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Haggis {
 
   private final double primaryForce;

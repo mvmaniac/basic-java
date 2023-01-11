@@ -1,6 +1,5 @@
 package io.devfactory.example.designpattern._02_structural_patterns._06_adapter._02_after.security;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class LoginHandler {
 
   private final UserDetailsService userDetailsService;

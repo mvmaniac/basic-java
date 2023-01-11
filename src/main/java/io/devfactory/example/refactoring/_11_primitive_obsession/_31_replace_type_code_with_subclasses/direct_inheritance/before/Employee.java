@@ -2,7 +2,6 @@ package io.devfactory.example.refactoring._11_primitive_obsession._31_replace_ty
 
 import java.util.List;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Employee {
 
   private final String name;

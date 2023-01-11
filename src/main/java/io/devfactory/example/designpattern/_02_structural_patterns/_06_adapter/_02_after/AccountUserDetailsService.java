@@ -3,7 +3,6 @@ package io.devfactory.example.designpattern._02_structural_patterns._06_adapter.
 import io.devfactory.example.designpattern._02_structural_patterns._06_adapter._02_after.security.UserDetails;
 import io.devfactory.example.designpattern._02_structural_patterns._06_adapter._02_after.security.UserDetailsService;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class AccountUserDetailsService implements UserDetailsService {
 
   private final AccountService accountService;

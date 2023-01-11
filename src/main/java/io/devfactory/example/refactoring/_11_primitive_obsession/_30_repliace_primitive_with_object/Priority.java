@@ -2,7 +2,6 @@ package io.devfactory.example.refactoring._11_primitive_obsession._30_repliace_p
 
 import java.util.List;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Priority {
 
   private static final List<String> LEGAL_VALUES = List.of("low", "normal", "high", "rush");

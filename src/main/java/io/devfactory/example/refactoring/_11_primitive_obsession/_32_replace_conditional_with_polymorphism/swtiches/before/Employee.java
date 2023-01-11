@@ -2,7 +2,6 @@ package io.devfactory.example.refactoring._11_primitive_obsession._32_replace_co
 
 import java.util.List;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Employee {
 
   private final String type;

@@ -2,7 +2,6 @@ package io.devfactory.example.refactoring._18_middle_man._40_replace_subclass_wi
 
 import java.util.List;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Show {
 
   private final List<String> properties;

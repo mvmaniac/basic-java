@@ -4,7 +4,6 @@ import io.devfactory.example.refactoring._06_mutable_data._19_separate_query_fro
 import io.devfactory.example.refactoring._06_mutable_data._19_separate_query_from_modifier.EmailGateway;
 import io.devfactory.example.refactoring._06_mutable_data._19_separate_query_from_modifier.Invoice;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Billing {
 
   private final Customer customer;

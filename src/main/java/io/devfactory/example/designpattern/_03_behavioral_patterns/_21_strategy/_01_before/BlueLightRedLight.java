@@ -2,7 +2,6 @@ package io.devfactory.example.designpattern._03_behavioral_patterns._21_strategy
 
 import lombok.extern.slf4j.Slf4j;
 
-@SuppressWarnings("ClassCanBeRecord")
 @Slf4j
 public class BlueLightRedLight {
 

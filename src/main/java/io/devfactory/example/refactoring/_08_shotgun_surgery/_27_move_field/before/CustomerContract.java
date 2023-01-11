@@ -2,7 +2,6 @@ package io.devfactory.example.refactoring._08_shotgun_surgery._27_move_field.bef
 
 import java.time.LocalDate;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class CustomerContract {
 
   private final LocalDate startDate;

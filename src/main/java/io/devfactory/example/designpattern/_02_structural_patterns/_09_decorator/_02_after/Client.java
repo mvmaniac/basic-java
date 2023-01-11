@@ -1,6 +1,5 @@
 package io.devfactory.example.designpattern._02_structural_patterns._09_decorator._02_after;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Client {
 
   private final CommentService commentService;

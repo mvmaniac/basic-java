@@ -4,7 +4,6 @@ import io.devfactory.example.designpattern._01_creational_patterns._04_builder._
 
 import java.time.LocalDate;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class TourDirector {
 
   private final TourPlanBuilder tourPlanBuilder;

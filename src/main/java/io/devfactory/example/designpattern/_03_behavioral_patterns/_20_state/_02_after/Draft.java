@@ -1,6 +1,5 @@
 package io.devfactory.example.designpattern._03_behavioral_patterns._20_state._02_after;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Draft implements State {
 
   private final OnlineCourse onlineCourse;
