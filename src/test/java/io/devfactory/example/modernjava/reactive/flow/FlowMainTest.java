@@ -1,12 +1,12 @@
 package io.devfactory.example.modernjava.reactive.flow;
 
-import static io.devfactory.example.modernjava.reactive.flow.FlowMain.getTemperature;
-import static io.devfactory.example.modernjava.reactive.flow.FlowMain.getTemperatureWithProcessor;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@SuppressWarnings("squid:S2699")
+import static io.devfactory.example.modernjava.reactive.flow.FlowMain.getTemperature;
+import static io.devfactory.example.modernjava.reactive.flow.FlowMain.getTemperatureWithProcessor;
+
+@SuppressWarnings("squid:S1186")
 class FlowMainTest {
 
   @DisplayName("온도_정보_가져오기")

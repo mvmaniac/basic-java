@@ -1,13 +1,14 @@
 package io.devfactory.example.modernjava.functional;
 
-import static io.devfactory.example.modernjava.functional.Currying.curriedConverter;
-
-import java.util.function.DoubleUnaryOperator;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@SuppressWarnings("squid:S2699")
+import java.util.function.DoubleUnaryOperator;
+
+import static io.devfactory.example.modernjava.functional.Currying.curriedConverter;
+
+@SuppressWarnings("squid:S1186")
 @Slf4j
 class CurryingTest {
 

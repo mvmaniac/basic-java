@@ -1,21 +1,18 @@
 package io.devfactory.example.modernjava.completable;
 
-import static io.devfactory.global.util.CommonUtils.millisToSeconds;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.*;
+import org.springframework.util.StopWatch;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Function;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.springframework.util.StopWatch;
 
-@SuppressWarnings("squid:S2699")
+import static io.devfactory.global.util.CommonUtils.millisToSeconds;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
+
+@SuppressWarnings("squid:S1186")
 @Slf4j
 @TestInstance(PER_CLASS)
 class ShopTest {

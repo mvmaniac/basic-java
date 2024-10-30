@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-@SuppressWarnings("squid:S2699")
+@SuppressWarnings("squid:S1186")
 @Slf4j
 class TourPlanTest {
 

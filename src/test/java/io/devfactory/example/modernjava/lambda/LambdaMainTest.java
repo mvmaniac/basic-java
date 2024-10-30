@@ -1,19 +1,17 @@
 package io.devfactory.example.modernjava.lambda;
 
-import static io.devfactory.example.modernjava.lambda.LambdaMain.filter;
-import static io.devfactory.example.modernjava.lambda.LambdaMain.filterApples;
-import static io.devfactory.example.modernjava.lambda.LambdaMain.filterApplesByColor;
-import static io.devfactory.example.modernjava.lambda.LambdaMain.filterApplesByWeight;
-import static java.util.Comparator.comparingInt;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Consumer;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@SuppressWarnings("squid:S2699")
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+
+import static io.devfactory.example.modernjava.lambda.LambdaMain.*;
+import static java.util.Comparator.comparingInt;
+
+@SuppressWarnings("squid:S1186")
 @Slf4j
 class LambdaMainTest {
 

@@ -1,41 +1,20 @@
 package io.devfactory.example.modernjava.stream;
 
-import static java.util.Comparator.comparingInt;
-import static java.util.stream.Collectors.averagingInt;
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.filtering;
-import static java.util.stream.Collectors.flatMapping;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.mapping;
-import static java.util.stream.Collectors.maxBy;
-import static java.util.stream.Collectors.partitioningBy;
-import static java.util.stream.Collectors.reducing;
-import static java.util.stream.Collectors.summarizingInt;
-import static java.util.stream.Collectors.summingInt;
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toMap;
-import static java.util.stream.Collectors.toSet;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
 
-@SuppressWarnings("squid:S2699")
+import java.util.*;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.Function;
+
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.*;
+
+@SuppressWarnings("squid:S1186")
 @Slf4j
 class CurrencyExchangeTest {
 

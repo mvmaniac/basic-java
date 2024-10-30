@@ -16,7 +16,7 @@ import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
-@SuppressWarnings("squid:S2699")
+@SuppressWarnings("squid:S1186")
 @Slf4j
 class TransactionTest {
 

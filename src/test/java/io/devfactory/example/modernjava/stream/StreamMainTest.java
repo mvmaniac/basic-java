@@ -1,20 +1,16 @@
 package io.devfactory.example.modernjava.stream;
 
-import static io.devfactory.example.modernjava.stream.StreamMain.getDishCountByMapReduce;
-import static io.devfactory.example.modernjava.stream.StreamMain.getGreaterThanCalories_320;
-import static io.devfactory.example.modernjava.stream.StreamMain.getHighCaloricDishNames;
-import static io.devfactory.example.modernjava.stream.StreamMain.getLessThanCalories_320;
-import static io.devfactory.example.modernjava.stream.StreamMain.getPairNumbers;
-import static io.devfactory.example.modernjava.stream.StreamMain.getVegetarianDish;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Consumer;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@SuppressWarnings("squid:S2699")
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+
+import static io.devfactory.example.modernjava.stream.StreamMain.*;
+
+@SuppressWarnings("squid:S1186")
 @Slf4j
 class StreamMainTest {
 

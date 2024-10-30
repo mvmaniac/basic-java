@@ -1,10 +1,5 @@
 package io.devfactory.example.modernjava.completable;
 
-import static io.devfactory.global.util.CommonUtils.millisToSeconds;
-import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
-
-import java.util.List;
-import java.util.function.Function;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +11,13 @@ import org.junit.jupiter.params.converter.SimpleArgumentConverter;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.util.StopWatch;
 
-@SuppressWarnings("squid:S2699")
+import java.util.List;
+import java.util.function.Function;
+
+import static io.devfactory.global.util.CommonUtils.millisToSeconds;
+import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
+
+@SuppressWarnings("squid:S1186")
 @Slf4j
 @TestInstance(PER_CLASS)
 class DepartmentStoreTest {
@@ -38,8 +39,7 @@ class DepartmentStoreTest {
     log.debug("[dev] ---------------------------------------------------");
     executeFindShopPrices(store::findShopPricesSupplyAsync, "findShopPricesSupplyAsync");
     log.debug("[dev] ---------------------------------------------------");
-    executeFindShopPrices(store::findShopPricesSupplyAsyncWithExecutor,
-        "findShopPricesSupplyAsyncWithExecutor");
+    executeFindShopPrices(store::findShopPricesSupplyAsyncWithExecutor, "findShopPricesSupplyAsyncWithExecutor");
   }
 
   @DisplayName("findShopPricesWithDiscount_테스트")
@@ -48,8 +48,7 @@ class DepartmentStoreTest {
   void findShopPricesWithDiscount_테스트(@ConvertWith(ShopConvert.class) DepartmentStore store) {
     executeFindShopPrices(store::findShopPricesWithDiscount, "findShopPricesWithDiscount");
     log.debug("[dev] ---------------------------------------------------");
-    executeFindShopPrices(store::findShopPricesWithDiscountSupplyAsync,
-        "findShopPricesWithDiscountSupplyAsync");
+    executeFindShopPrices(store::findShopPricesWithDiscountSupplyAsync, "findShopPricesWithDiscountSupplyAsync");
   }
 
   @DisplayName("printShopPricesWithDiscount_테스트")
@@ -64,8 +63,7 @@ class DepartmentStoreTest {
   @ValueSource(ints = {5})
   void findShopPricesWithExchangeSupplyAsync_테스트(
       @ConvertWith(ShopConvert.class) DepartmentStore store) {
-    executeFindShopPrices(store::findShopPricesWithExchangeSupplyAsync,
-        "findShopPricesWithExchangeSupplyAsync");
+    executeFindShopPrices(store::findShopPricesWithExchangeSupplyAsync, "findShopPricesWithExchangeSupplyAsync");
   }
 
   private void executeFindShopPrices(Function<String, List<String>> findShopPrices,
@@ -78,15 +76,14 @@ class DepartmentStoreTest {
     stopWatch.stop();
 
     final long lastTaskTimeMillis = stopWatch.getLastTaskTimeMillis();
-    log.debug("[dev] {} - Done in: {} ms / {} sec", product, lastTaskTimeMillis,
-        millisToSeconds(lastTaskTimeMillis));
+    log.debug("[dev] {} - Done in: {} ms / {} sec", product, lastTaskTimeMillis, millisToSeconds(lastTaskTimeMillis));
   }
 
   static class ShopConvert extends SimpleArgumentConverter {
 
     @Override
-    protected Object convert(Object source, Class<?> targetType)
-        throws ArgumentConversionException {
+    protected Object convert(Object source,
+        Class<?> targetType) throws ArgumentConversionException {
       return new DepartmentStore(Integer.parseInt(String.valueOf(source)));
     }
 

@@ -1,8 +1,5 @@
 package io.devfactory.example.modernjava.optional;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Properties;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +11,11 @@ import org.junit.jupiter.params.aggregator.ArgumentsAggregationException;
 import org.junit.jupiter.params.aggregator.ArgumentsAggregator;
 import org.junit.jupiter.params.provider.CsvSource;
 
-@SuppressWarnings("squid:S2699")
+import java.util.List;
+import java.util.Optional;
+import java.util.Properties;
+
+@SuppressWarnings("squid:S1186")
 @Slf4j
 class OptMainTest {
 
@@ -68,6 +69,7 @@ class OptMainTest {
 
       return getPerson(type, value);
     }
+
   }
 
   private static OptPerson getPerson(int type, String value) {
